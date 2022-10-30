@@ -35,11 +35,11 @@ def document():
 
 @app.route("/nlp")
 def nlpNotebook():
-    return render_template("NLP.html")
+    return render_template("weibopublicsentiment.html")
 
 @app.route("/analyse")
 def anaNotebook():
-    return render_template("analyse.html")
+    return render_template("NLP.html")
 
 @app.route("/worldmap",methods=['POST', 'GET'])
 def get_world_map():
