@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>技术文档</title>
+<title>疫情数据可视化分析</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -102,11 +102,12 @@ body.showEditorSelection li.code-line:hover:before {
 img {
 	max-width: 100%;
 	max-height: 100%;
+	text-align: center;
 }
 
 a {
 	text-decoration: none;
-	display: inline-block; 
+	display: inline-block;
 	text-align: center;
 	text-decoration: none;
 	color: azure;
@@ -132,15 +133,33 @@ hr {
 	border-bottom: 2px solid;
 }
 
-h1 {
-	padding-bottom: 0.3em;
+h2, h3, h4 {
+	font-weight: normal;
+	text-align: center;
 	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
+	padding-bottom: 10px;
+	border-bottom-style: dashed;
 }
 
-h1, h2, h3 {
+h2 {
+	border-bottom-width: 2px;
+}
+
+h3 {
+	border-bottom-width: 1px;
+}
+
+h4 {
+	border-bottom-width: 0px;
+}
+
+h1 {
 	font-weight: normal;
+	text-align: center;
+	line-height: 1.2;
+	padding-bottom: 0.3em;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
 }
 
 table {
@@ -380,17 +399,35 @@ code {
 <div id="links" style="line-height: 36px; background-color:black;">
     <a href="/" >世界疫情</a>
 	<a href="/document" >中国疫情</a>
-	<a href="/nlp" >舆论分析notebook</a>
-	<a href="/analyse" >趋势预测notebook</a>
+	<a href="/nlp" >微博舆情</a>
+	<a href="/analyse" >分析结果</a>
 </div>
 
-<div style="margin-left: auto;margin-right: 
+<div style="margin-left: auto;margin-right:
 auto;max-width: 900px;background-color:ivory;padding-left: 15px;padding-right: 15px;">
 
+<h1 id="%E7%96%AB%E6%83%85%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%AF%E8%A7%86%E5%8C%96">疫情空间数据与舆情数据分析可视化</h1>
 
+<h3 id="%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE%E5%8A%A8%E6%80%81%E4%BA%A4%E4%BA%92%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE">疫情数据动态交互可视化地图</h3>
+<div id="current-maps" >
+    <div>
+        <label>请选择地图类型:     </label>
+        <select name="select-map" id="mapselecter">
+            <option value="0" >现存确诊人数</option>
+            <option value="1" >累计死亡人数</option>
+            <option value="2" >死亡率（死亡/确诊）</option>
+        </select>
+    </div>
+    <div>
+        <label>拖动滑块即可切换日期:</label>
+        <input id='slider' style="width: 400px;vertical-align: middle;" type='range' min='0' max='121' step='1'/>
+    </div>
+    <div id="worldMap" class="maps" style="width:800px; height:600px;display: inline-block;"></div>
+    <div id="chinaMap" class="maps" style="width:800px; height:600px;display: inline-block;"></div>
+</div>
 
-<div id="04cd225d9bb642288bef9788ed998f30" class="chart-container" style="width:500px; height:300px;display: inline-block;"></div>
-<script type="text/javascript" src="{{ url_for('static',filename='calendar.js') }}"></script>
+</li>
+
 
 <h3 id="%E4%B8%96%E7%95%8C%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE%E6%9B%B2%E7%BA%BF%E5%9B%BE">世界疫情数据曲线图</h3>
 <div>
@@ -403,7 +440,56 @@ auto;max-width: 900px;background-color:ivory;padding-left: 15px;padding-right: 1
     <div id="lines" style="width:1000px; height:600px;"></div>
 </div>
 
+<h3 id="%E5%85%A8%E5%9B%BD%E7%96%AB%E6%83%85%E6%96%B0%E5%A2%9E%E7%A1%AE%E8%AF%8A%E4%BA%BA%E6%95%B0%E6%97%A5%E5%8E%86%E5%9B%BE">全国疫情新增确诊人数日历图</h3>
+<div id="04cd225d9bb642288bef9788ed998f30" class="chart-container" style="width:500px; height:300px;display: inline-block;"></div>
+<script type="text/javascript" src="{{ url_for('static',filename='calendar.js') }}"></script>
+
+
+<h2 id="part-2-%E7%96%AB%E6%83%85%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96">part 2: 疫情舆情数据分析与可视化</h2>
+<h3 id="%E6%96%B0%E9%97%BB%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96">新闻数据分析与可视化</h3>
+<h4 id="%E4%B8%AD%E5%9B%BD%E7%A4%BE%E4%BC%9A%E7%BB%84%E7%BB%87%E5%85%AC%E5%85%B1%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7%E4%B8%93%E5%8C%BA%E6%96%B0%E9%97%BB%E8%AF%8D%E4%BA%91%E5%8F%AF%E8%A7%86%E5%8C%96">中国社会组织公共服务平台疫情防控专区新闻词云可视化：</h4>
+<div>
+    <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
+    <script type="text/javascript" src="{{ url_for('static',filename='wordcloud.js') }}"></script>
 </div>
+
+<div>
+    <div>
+        <label>拖动滑块即可切换日期:</label>
+        <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
+    </div>
+    <div id="wordcloud" style="width:1000px; height:600px;"></div>
+</div>
+
+<img src="{{ url_for('static',filename='results/tfidf.png') }}" style="width:600px;">
+
+<h1 id="%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90">层次聚类分析</h1>
+
+<img src="{{ url_for('static',filename='results/Tree_word_50.png') }}" style="width:1000px;">
+
+<h3 id="%E5%BE%AE%E5%8D%9A%E8%88%86%E6%83%85%E5%88%86%E6%9E%90%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96">微博舆情分析与数据可视化</h3>
+<h4 id="%E5%BE%AE%E5%8D%9A%E4%B8%BB%E9%A2%98%E8%AF%8D%E8%AF%8D%E4%BA%91%E5%9B%BE">微博主题词词云图：</h4>
+
 <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
+
+<div>
+    <div>
+        <label>拖动滑块即可切换日期:</label>
+        <input id='sliderWeibo' style="width: 400px;vertical-align: middle;" type='range' min='0' max='49' step='1'/>
+    </div>
+    <div id="weibocloud" style="width:1000px; height:600px;"></div>
+</div>
+
+<h4 id="%E5%BE%AE%E5%8D%9A%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90">微博情感分析</h4>
+
+<div>
+	<div id="e8865e65e86c410f9666c9b174426b7d" class="chart-container" style="width:900px; height:500px;"></div>
+	<script type="text/javascript" src="{{ url_for('static',filename='weibolines.js') }}"></script>
+</div>
+
+</div>
+
+<script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
+
 </body>
 </html>

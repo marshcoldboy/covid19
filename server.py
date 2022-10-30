@@ -31,7 +31,7 @@ def index():
 
 @app.route("/document")
 def document():
-    return render_template("README.html")
+    return render_template("china.html")
 
 @app.route("/nlp")
 def nlpNotebook():
