@@ -397,82 +397,38 @@ code {
 <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
 
 <div id="links" style="line-height: 36px; background-color:black;">
-    <a href="/" >疫情地图</a>
-	<a href="/document" >每日新增</a>
+    <a href="/" >首页</a>
+	<a href="/document" >每日疫情</a>
 	<a href="/nlp" >微博舆情</a>
 	<a href="/analyse" >分析结果</a>
 </div>
 
 <div style="margin-left: auto;margin-right: 
-auto;max-width: 1200px;background-color:azure;padding-left: 15px;padding-right: 15px;">
+auto;max-width: 1600px;background-color:azure;padding-left: 15px;padding-right: 15px;">
 
-<h1 id="%E7%96%AB%E6%83%85%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%AF%E8%A7%86%E5%8C%96">疫情数据动态交互可视化地图</h1>
+<img src="{{ url_for('static',filename='results/home.png') }}" style="width:1560px;">
 
-<div id="current-maps" >
-    <div>
-        <label>请选择地图类型:     </label>
-        <select name="select-map" id="mapselecter">
-            <option value="0" >现存确诊人数</option>
-            <option value="1" >累计死亡人数</option>
-            <option value="2" >死亡率（死亡/确诊）</option>
-        </select>
-    </div>
-    <div>
-        <label>拖动滑块即可切换日期:</label>
-        <input id='slider' style="width: 400px;vertical-align: middle;" type='range' min='0' max='121' step='1'/>
-    </div>
-    <div id="worldMap" class="maps" style="width:800px; height:600px;display: inline-block;"></div>
-    <div id="chinaMap" class="maps" style="width:800px; height:600px;display: inline-block;"></div>
-</div>
+<h2 id="part-1-%E7%96%AB%E6%83%85%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96">项目简介</h2>
+
+<p>...</p>
+
+<h2 id="part-2-%E7%96%AB%E6%83%85%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96">ABC小组</h2>
+<p>github：</p>
+<p>https://github.com/marshcoldboy/covid19</p>
 
 
 
-<div>
-    <label>请选择国家：    </label>
-    <select id="selectCountrys">
-    {% for cate in cates %}
-        <option value="{{cate}}" >{{cate}}</option>
-    {% endfor %}
-    </select>
-    <div id="lines" style="width:1000px; height:600px;"></div>
-</div>
-
-<div id="04cd225d9bb642288bef9788ed998f30" class="chart-container" style="width:500px; height:300px;display: inline-block;"></div>
-<script type="text/javascript" src="{{ url_for('static',filename='calendar.js') }}"></script>
 
 
-<div>
-    <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
-    <script type="text/javascript" src="{{ url_for('static',filename='wordcloud.js') }}"></script>
-</div>
-
-<div>
-    <div>
-        <label>拖动滑块即可切换日期:</label>
-        <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
-    </div>
-    <div id="wordcloud" style="width:1000px; height:600px;"></div>
-</div>
 
 
-<script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
-
-<div>
-    <div>
-        <label>拖动滑块即可切换日期:</label>
-        <input id='sliderWeibo' style="width: 400px;vertical-align: middle;" type='range' min='0' max='49' step='1'/>
-    </div>
-    <div id="weibocloud" style="width:1000px; height:600px;"></div>
-</div>
 
 
-<div>
-	<script type="text/javascript" src="{{ url_for('static',filename='weibolines.js') }}"></script>
-</div>
+
+
 
 </div>
 
-<script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
 
 </body>
 </html>

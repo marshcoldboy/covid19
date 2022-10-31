@@ -397,17 +397,20 @@ code {
 <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
 
 <div id="links" style="line-height: 36px; background-color:black;">
-    <a href="/" >疫情地图</a>
-	<a href="/document" >每日新增</a>
+    <a href="/" >首页</a>
+	<a href="/document" >每日疫情</a>
 	<a href="/nlp" >微博舆情</a>
 	<a href="/analyse" >分析结果</a>
 </div>
 
 <div style="margin-left: auto;margin-right:
-auto;max-width: 1200px;background-color:azure;padding-left: 15px;padding-right: 15px;">
+auto;max-width: 1600px;background-color:azure;padding-left: 15px;padding-right: 15px;">
+
+<h1 id="%E7%96%AB%E6%83%85%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%AF%E8%A7%86%E5%8C%96">舆情数据可视化</h1>
+
 
 <div>
-    <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
+    <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:1350px; height:750px;"></div>
     <script type="text/javascript" src="{{ url_for('static',filename='wordcloud.js') }}"></script>
 </div>
 
@@ -432,13 +435,14 @@ auto;max-width: 1200px;background-color:azure;padding-left: 15px;padding-right: 
 <h4 id="%E5%BE%AE%E5%8D%9A%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90">微博情感分析</h4>
 
 <div>
-	<div id="e8865e65e86c410f9666c9b174426b7d" class="chart-container" style="width:900px; height:500px;"></div>
+	<div id="e8865e65e86c410f9666c9b174426b7d" class="chart-container" style="width:1350px; height:750px;"></div>
 	<script type="text/javascript" src="{{ url_for('static',filename='weibolines.js') }}"></script>
 </div>
 
-<h1 id="%E7%96%AB%E6%83%85%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%AF%E8%A7%86%E5%8C%96">疫情空间数据与舆情数据分析可视化</h1>
+<h2 id="part-2-%E7%96%AB%E6%83%85%E8%88%86%E6%83%85%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96">ABC小组</h2>
+<p>github：</p>
+<p>https://github.com/marshcoldboy/covid19</p>
 
-<h3 id="%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE%E5%8A%A8%E6%80%81%E4%BA%A4%E4%BA%92%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9C%B0%E5%9B%BE">疫情数据动态交互可视化地图</h3>
 <div id="current-maps" >
     <div>
         <label>请选择地图类型:     </label>
